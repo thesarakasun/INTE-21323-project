@@ -6,6 +6,7 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
+    role: 'student', // Default role
   });
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
@@ -28,14 +29,14 @@ const Register = () => {
     }
 
     try {
-      // CORRECTED: Using the 'password' variable from above for consistency
       const response = await authService.register(
         formData.username,
         formData.email,
-        password 
+        formData.password,
+        formData.role
       );
       setMessage(response.data.message);
-    } catch (err) { // CORRECTED: Added the missing opening curly brace
+    } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     }
   };
@@ -48,51 +49,28 @@ const Register = () => {
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label className="form-label">Username</label>
-          <input
-            type="text"
-            name="username"
-            className="form-control"
-            value={formData.username}
-            onChange={handleChange}
-            required
-          />
+          <input type="text" name="username" className="form-control" onChange={handleChange} required />
         </div>
         <div className="mb-3">
           <label className="form-label">Email</label>
-          <input
-            type="email"
-            name="email"
-            className="form-control"
-            value={formData.email}
-            onChange={handleChange}
-            required
-          />
+          <input type="email" name="email" className="form-control" onChange={handleChange} required />
         </div>
         <div className="mb-3">
           <label className="form-label">Password</label>
-          <input
-            type="password"
-            name="password"
-            id="password"
-            className="form-control"
-            value={formData.password}
-            onChange={handleChange}
-            required
-          />
+          <input type="password" name="password" id="password" className="form-control" onChange={handleChange} required />
         </div>
         <div className="mb-3">
           <label className="form-label">Confirm Password</label>
-          <input
-            type="password"
-            name="confirmPassword"
-            id="confirmPassword"
-            className="form-control"
-            required
-          />
+          <input type="password" name="confirmPassword" id="confirmPassword" className="form-control" required />
         </div>
-        <button type="submit" className="btn btn-primary">
-          Register
-        </button>
+        <div className="mb-3">
+          <label className="form-label">I am a...</label>
+          <select name="role" className="form-select" value={formData.role} onChange={handleChange}>
+            <option value="student">Student</option>
+            <option value="teacher">Teacher</option>
+          </select>
+        </div>
+        <button type="submit" className="btn btn-primary">Register</button>
       </form>
     </div>
   );

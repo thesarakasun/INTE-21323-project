@@ -7,10 +7,8 @@ const {
   requestPasswordReset,
   resetPassword,
   refreshToken,
-  getProtectedData,
-  getAdminData,
 } = require('../controllers/authController');
-const { protect, admin } = require('../middleware/authMiddleware');
+const { protect } = require('../middleware/authMiddleware');
 
 router.post('/register', registerUser);
 router.post('/login', loginUser);
@@ -19,7 +17,6 @@ router.post('/request-password-reset', requestPasswordReset);
 router.post('/reset-password/:token', resetPassword);
 router.post('/refresh-token', refreshToken);
 
-router.get('/protected', protect, getProtectedData);
-router.get('/admin', protect, admin, getAdminData);
+// The broken /protected and /admin routes have been removed.
 
 module.exports = router;

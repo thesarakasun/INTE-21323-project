@@ -14,10 +14,11 @@ apiClient.interceptors.request.use((config) => {
   return config;
 });
 
-const register = (username, email, password) => {
-  return apiClient.post('/register', { username, email, password });
+const register = (username, email, password, role) => {
+  return apiClient.post('/register', { username, email, password, role });
 };
 
+// ... (rest of the file remains the same)
 const login = (email, password) => {
   return apiClient.post('/login', { email, password });
 };
@@ -34,17 +35,12 @@ const resetPassword = (token, password) => {
     return apiClient.post(`/reset-password/${token}`, { password });
 };
 
-const getProtectedData = () => {
-  return apiClient.get('/protected');
-};
-
 const authService = {
   register,
   login,
   verifyEmail,
   requestPasswordReset,
   resetPassword,
-  getProtectedData,
 };
 
 export default authService;

@@ -20,7 +20,7 @@ const registerUser = async (req, res, next) => {
       throw new Error(error.details[0].message);
     }
 
-    const { username, email, password } = req.body;
+    const { username, email, password, role } = req.body;
     const userExists = await User.findOne({ email });
 
     if (userExists) {
@@ -33,6 +33,7 @@ const registerUser = async (req, res, next) => {
       username,
       email,
       password,
+      role, // Add role here
       emailVerificationToken,
     });
 
@@ -49,6 +50,7 @@ const registerUser = async (req, res, next) => {
     next(error);
   }
 };
+
 
 const loginUser = async (req, res, next) => {
   try {

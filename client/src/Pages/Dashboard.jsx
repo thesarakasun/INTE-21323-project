@@ -1,43 +1,26 @@
-import { useState, useEffect } from 'react';
-import authService from '../api/authService';
 import { useAuth } from '../context/AuthContext';
 import { useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
+import TeacherDashboard from '../components/TeacherDashboard';
+import StudentDashboard from '../components/StudentDashboard';
 
 const Dashboard = () => {
-  const [data, setData] = useState('');
-  const [error, setError] = useState('');
-  const { user, logout } = useAuth();
+  const { user } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {
-        navigate('/login');
-        return;
+      navigate('/login');
     }
-    
-    authService.getProtectedData()
-      .then(response => {
-        setData(response.data.message);
-      })
-      .catch(err => {
-        setError(err.response?.data?.message || 'Failed to fetch data');
-        if(err.response?.status === 401) {
-            logout();
-            navigate('/login');
-        }
-      });
-  }, [user, navigate, logout]);
+  }, [user, navigate]);
+
+  if (!user) {
+    return null; // or a loading spinner
+  }
 
   return (
     <div>
-      <h2>Dashboard</h2>
-      {error ? <div className="alert alert-danger">{error}</div> : <div className="alert alert-success">{data}</div>}
-      {user && (
-        <div>
-            <p><strong>Email:</strong> {user.email}</p>
-            <p><strong>Role:</strong> {user.role}</p>
-        </div>
-      )}
+      {user.role === 'teacher' ? <TeacherDashboard /> : <StudentDashboard />}
     </div>
   );
 };

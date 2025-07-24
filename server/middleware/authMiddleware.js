@@ -23,13 +23,13 @@ const protect = async (req, res, next) => {
   }
 };
 
-const admin = (req, res, next) => {
-  if (req.user && req.user.role === 'admin') {
+const teacher = (req, res, next) => {
+  if (req.user && req.user.role === 'teacher') {
     next();
   } else {
     res.status(403);
-    throw new Error('Not authorized as an admin');
+    throw new Error('Not authorized as a teacher');
   }
 };
 
-module.exports = { protect, admin };
+module.exports = { protect, teacher };
