@@ -1,0 +1,33 @@
+version: '3.9'
+
+services:
+  server:
+    build: ./server
+    ports:
+      - "5000:5000"
+    environment:
+      - MONGO_URI=mongodb+srv://hirun:Hirun2020.@cluster0.a7s0mkp.mongodb.net/webproject2025?retryWrites=true&w=majority&appName=Cluster0- JWT_SECRET=8743b52063cd84097a65d1633f5c74f5b2d
+      - SMTP_USER=thesarak03@gmail.com
+      - SMTP_PASS=xsmtpsib-52fadbe1673fda4003a0bda76f46aa1fc25103cfcdd47eb70b681a4a6b51488e-Z5kMmPDWG94t3fKT
+    depends_on:
+      - mongo
+    env_file:
+      - ./server/.env
+
+  client:
+    build: ./client
+    ports:
+      - "3001:80"
+
+  mongo:
+    image: mongo:latest
+    container_name: mongodb
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+volumes:
+  mongo-data:
+
+

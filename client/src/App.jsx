@@ -1,12 +1,12 @@
 import { Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Register from './pages/Register';
-import Dashboard from './pages/Dashboard';
-import EmailVerified from './pages/EmailVerified';
-import RequestPasswordReset from './pages/RequestPasswordReset';
-import ResetPassword from './pages/ResetPassword';
+import Home from './Pages/Home';
+import Login from './Pages/Login';
+import Register from './Pages/Register';
+import Dashboard from './Pages/Dashboard';
+import EmailVerified from './Pages/EmailVerified';
+import RequestPasswordReset from './Pages/RequestPasswordReset';
+import ResetPassword from './Pages/ResetPassword';
 
 function App() {
   return (
