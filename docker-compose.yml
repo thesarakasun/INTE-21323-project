@@ -1,0 +1,54 @@
+name: learnsphere-dev
+
+services:
+  mongo:
+    image: mongo:7.0
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+    networks:
+      - learnsphere-net
+
+  server:
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    env_file: './server/.env'
+    ports:
+      - "5000:5000"
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    networks:
+      - learnsphere-net
+    depends_on:
+      - mongo
+
+  client:
+    build:
+      context: ./client
+      dockerfile: Dockerfile
+      # This 'args' section passes the variable from your .env file
+      # into the Dockerfile's ARG instruction.
+      args:
+        - VITE_API_BASE_URL=${VITE_API_BASE_URL}
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    volumes:
+      - ./client:/app
+      - /app/node_modules
+    networks:
+      - learnsphere-net
+    command: npm run dev -- --host
+    depends_on:
+      - server
+
+volumes:
+  mongo-data:
+
+networks:
+  learnsphere-net:
+    driver: bridge

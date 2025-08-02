@@ -1,12 +1,21 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Import useEffect
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [error, setError] = useState('');
-  const { login } = useAuth();
+  const { user, login } = useAuth(); // Get the user from context
   const navigate = useNavigate();
+
+  // Add this useEffect hook
+  useEffect(() => {
+    // If a user is already logged in, redirect to the dashboard
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
+
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });

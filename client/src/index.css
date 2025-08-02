@@ -128,3 +128,122 @@ h1, h2, h3, h4, h5, h6 {
   background-color: #ffffff;
   box-shadow: 0 4px 6px -1px var(--shadow-color);
 }
+
+/* --- HOMEPAGE STYLES --- */
+
+.hero-section {
+  position: relative;
+  padding: 10rem 0;
+  background: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80') no-repeat center center;
+  background-size: cover;
+  border-radius: 12px;
+  margin-bottom: 2rem;
+}
+
+.hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(40, 30, 80, 0.6);
+  border-radius: 12px;
+}
+
+.hero-title {
+  animation: fadeInDown 1s ease-out;
+}
+
+.hero-subtitle {
+  animation: fadeInUp 1s ease-out 0.5s;
+  animation-fill-mode: both; /* Keeps the start state of the animation */
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.feature-card {
+  background-color: var(--card-background);
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+  box-shadow: 0 4px 6px -1px var(--shadow-color);
+  height: 100%;
+  transition: all 0.3s ease;
+}
+.feature-card-wrapper {
+  padding: 1rem;
+}
+.feature-card:hover {
+  transform: scale(1.05);
+  box-shadow: 0 20px 25px -5px var(--shadow-color), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+.video-responsive {
+  overflow: hidden;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  position: relative;
+  height: 0;
+  border-radius: 12px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+}
+
+.video-responsive iframe {
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+}
+
+.cta-card {
+  background: linear-gradient(45deg, var(--primary-color), #8a2be2); /* BlueViolet */
+  border-radius: 12px;
+  animation: fadeIn 2s;
+}
+
+
+/* --- FOOTER STYLES --- */
+
+.footer-container {
+  background-color: #212529; /* Dark background from navbar */
+}
+
+.footer-container a {
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.footer-container a:hover {
+  color: #cccccc !important;
+  text-decoration: underline;
+}
+
+/* --- NAVBAR FIXES --- */
+.navbar .navbar-user-actions .btn {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  vertical-align: middle;
+}
+
+
+/* On smaller screens (when navbar is collapsed), add some top margin 
+   to the user actions to separate them from the main nav links. */
+@media (max-width: 991.98px) {
+  .navbar-user-actions {
+    margin-top: 0.5rem;
+  }
+}
+/* On smaller screens (when navbar is collapsed), add some top margin 
+   to the user actions to separate them from the main nav links. */
+@media (max-width: 991.98px) {
+  .navbar-user-actions {
+    margin-top: 0.5rem;
+  }
+}

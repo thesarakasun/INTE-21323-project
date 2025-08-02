@@ -14,7 +14,20 @@ const Navbar = () => {
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
         <Link className="navbar-brand" to="/">LearnSphere</Link>
-        <div className="collapse navbar-collapse">
+        
+        <button 
+          className="navbar-toggler" 
+          type="button" 
+          data-bs-toggle="collapse" 
+          data-bs-target="#navbarNav" 
+          aria-controls="navbarNav" 
+          aria-expanded="false" 
+          aria-label="Toggle navigation"
+        >
+          <span className="navbar-toggler-icon"></span>
+        </button>
+
+        <div className="collapse navbar-collapse" id="navbarNav">
           <ul className="navbar-nav me-auto mb-2 mb-lg-0">
             <li className="nav-item">
               <Link className="nav-link" to="/">Home</Link>
@@ -25,19 +38,21 @@ const Navbar = () => {
               </li>
             )}
           </ul>
-          <div className="d-flex">
+          
+          {/* This wrapper div ensures consistent alignment for both states */}
+          <div className="navbar-user-actions">
             {user ? (
-              <>
+              <div className="d-flex align-items-center">
                 <span className="navbar-text me-3">
                   Welcome, {user.username}
                 </span>
                 <button className="btn btn-outline-light" onClick={handleLogout}>Logout</button>
-              </>
+              </div>
             ) : (
-              <>
+              <div className="d-flex align-items-center">
                 <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
-                <Link to="/register" className="btn btn-light">Register</Link>
-              </>
+                <Link to="/register" className="btn btn-primary">Register</Link>
+              </div>
             )}
           </div>
         </div>

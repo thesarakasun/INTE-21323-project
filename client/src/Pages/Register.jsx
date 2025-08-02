@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react'; // Import useEffect
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
+import { useAuth } from '../context/AuthContext'; // Import useAuth
 import authService from '../api/authService';
 
 const Register = () => {
@@ -6,10 +8,19 @@ const Register = () => {
     username: '',
     email: '',
     password: '',
-    role: 'student', // Default role
+    role: 'student',
   });
   const [message, setMessage] = useState('');
   const [error, setError] = useState('');
+  const { user } = useAuth(); // Get the user from context
+  const navigate = useNavigate();
+
+  // Add this useEffect hook
+  useEffect(() => {
+    if (user) {
+      navigate('/dashboard');
+    }
+  }, [user, navigate]);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -40,7 +51,8 @@ const Register = () => {
       setError(err.response?.data?.message || 'Registration failed');
     }
   };
-
+  
+  // ... the return(...) JSX part remains the same
   return (
     <div>
       <h2>Register</h2>
@@ -58,6 +70,9 @@ const Register = () => {
         <div className="mb-3">
           <label className="form-label">Password</label>
           <input type="password" name="password" id="password" className="form-control" onChange={handleChange} required />
+          <small className="form-text text-muted">
+            Must be at least 8 characters and contain a letter, a number, and a special character.
+          </small>
         </div>
         <div className="mb-3">
           <label className="form-label">Confirm Password</label>
