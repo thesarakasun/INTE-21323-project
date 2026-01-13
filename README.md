@@ -3,13 +3,13 @@
 ## Project Overview
 LearnSphere is a full-stack MERN application designed as a simple and interactive
 platform to connect teachers and students. The system provides a secure authentication
-service with features like JWT-based login, password reset, and email verification. The core
+service with features like JWT-based login, password reset and email verification. The core
 functionality allows users to register as either a "teacher" or a "student." Teachers can log
 in to a dedicated dashboard to create and manage their courses, while students can
 browse and enroll in available courses.
 This project was developed following modern web practices, including a modular backend
 architecture, a responsive React frontend, containerization with Docker for consistent
-environments, and is deployed to the cloud using Azure App Service.
+environments and is deployed to the cloud using Azure App Service.
 
 ## Technologies Used 
 
@@ -50,7 +50,7 @@ environments, and is deployed to the cloud using Azure App Service.
 1. **Clone the repository:**
  ```
  git clone https://github.com/thesarakasun/INTE-21323-project.git
- cd C:\2yr2sem
+ cd <file_path>
  ```
 2. **Configure Backend Environment:**
  * Navigate to the `/server` directory and create a `.env` file.
@@ -74,12 +74,3 @@ Live, interactive API documentation is generated using Swagger/OpenAPI. Once the
 backend server is running, you can access the documentation at:
 
 **[http://localhost:5000/api-docs](http://localhost:5000/api-docs)**
-
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
