@@ -1,7 +1,6 @@
 # LearnSphere - Teacher-Student Course Platform
 
-## [cite_start]Project Overview [cite: 163]
-
+## Project Overview
 LearnSphere is a full-stack MERN application designed as a simple and interactive
 platform to connect teachers and students. The system provides a secure authentication
 service with features like JWT-based login, password reset, and email verification. The core
@@ -12,7 +11,7 @@ This project was developed following modern web practices, including a modular b
 architecture, a responsive React frontend, containerization with Docker for consistent
 environments, and is deployed to the cloud using Azure App Service.
 
-## [cite_start]Technologies Used [cite: 165]
+## Technologies Used 
 
 **Frontend:**
 * React (with Vite)
@@ -39,7 +38,7 @@ environments, and is deployed to the cloud using Azure App Service.
 * Microsoft Azure (App Service, Container Registry)
 * Git & GitHub for version control
 
-## [cite_start]Setup Instructions [cite: 166]
+## Setup Instructions
 
 ### Prerequisites
 * Node.js (v18 or higher)
@@ -70,24 +69,11 @@ environments, and is deployed to the cloud using Azure App Service.
  * **Frontend:** `http://localhost:5173`
  * **Backend API:** `http://localhost:5000`
 
-## [cite_start]API Usage (Swagger UI) [cite: 167]
+## API Usage (Swagger UI)
 Live, interactive API documentation is generated using Swagger/OpenAPI. Once the
 backend server is running, you can access the documentation at:
 
 **[http://localhost:5000/api-docs](http://localhost:5000/api-docs)**
-## [cite_start]Team Member Contributions [cite: 168]
-| Member Name | Role(s) | Key Contributions |
-
-|Thesara   |  |  |
-|Praneesha |  |  |
-|Hirun     |  |  |
-|Minoja    |  |  |
-|Geethma   |  |  |
-|Sewmi     |  |  |
-
-
-
-
 
 # React + Vite
 
