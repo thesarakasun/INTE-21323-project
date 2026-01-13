@@ -11,47 +11,98 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+    <nav style={{
+      background: 'linear-gradient(145deg, #1a1f3a 0%, #0f1729 100%)',
+      borderBottom: '1px solid rgba(0, 212, 255, 0.1)',
+      boxShadow: '0 4px 20px rgba(0, 0, 0, 0.5)',
+      padding: '0.75rem 0'
+    }}>
       <div className="container-fluid">
-        <Link className="navbar-brand" to="/">LearnSphere</Link>
-        
-        <button 
-          className="navbar-toggler" 
-          type="button" 
-          data-bs-toggle="collapse" 
-          data-bs-target="#navbarNav" 
-          aria-controls="navbarNav" 
-          aria-expanded="false" 
-          aria-label="Toggle navigation"
-        >
-          <span className="navbar-toggler-icon"></span>
-        </button>
+        <div className="d-flex justify-content-between align-items-center flex-wrap">
+          {/* Brand */}
+          <Link 
+            to="/" 
+            className="navbar-brand fw-bold" 
+            style={{ 
+              color: '#ffffff',
+              fontSize: '1.5rem',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease'
+            }}
+            onMouseEnter={(e) => e.currentTarget.style.color = '#00d4ff'}
+            onMouseLeave={(e) => e.currentTarget.style.color = '#ffffff'}
+          >
+            LearnSphere
+          </Link>
 
-        <div className="collapse navbar-collapse" id="navbarNav">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-            <li className="nav-item">
-              <Link className="nav-link" to="/">Home</Link>
-            </li>
+          {/* Navigation Links */}
+          <div className="d-flex align-items-center gap-3 flex-wrap">
+            <Link 
+              to="/" 
+              style={{ 
+                color: '#8b9dc3',
+                textDecoration: 'none',
+                fontSize: '0.95rem',
+                transition: 'color 0.3s ease',
+                fontWeight: '500'
+              }}
+              onMouseEnter={(e) => e.currentTarget.style.color = '#00d4ff'}
+              onMouseLeave={(e) => e.currentTarget.style.color = '#8b9dc3'}
+            >
+              Home
+            </Link>
+            
             {user && (
-              <li className="nav-item">
-                <Link className="nav-link" to="/dashboard">Dashboard</Link>
-              </li>
+              <Link 
+                to="/dashboard"
+                style={{ 
+                  color: '#8b9dc3',
+                  textDecoration: 'none',
+                  fontSize: '0.95rem',
+                  transition: 'color 0.3s ease',
+                  fontWeight: '500'
+                }}
+                onMouseEnter={(e) => e.currentTarget.style.color = '#00d4ff'}
+                onMouseLeave={(e) => e.currentTarget.style.color = '#8b9dc3'}
+              >
+                Dashboard
+              </Link>
             )}
-          </ul>
-          
-          {/* This wrapper div ensures consistent alignment for both states */}
-          <div className="navbar-user-actions">
+
+            {/* User Actions */}
             {user ? (
-              <div className="d-flex align-items-center">
-                <span className="navbar-text me-3">
-                  Welcome, {user.username}
+              <div className="d-flex align-items-center gap-3">
+                <span style={{ color: '#8b9dc3', fontSize: '0.9rem' }}>
+                  Welcome, <span style={{ color: '#00d4ff', fontWeight: '600' }}>{user.username}</span>
                 </span>
-                <button className="btn btn-outline-light" onClick={handleLogout}>Logout</button>
+                <button 
+                  onClick={handleLogout}
+                  style={{
+                    background: 'rgba(255, 71, 87, 0.15)',
+                    border: '1px solid rgba(255, 71, 87, 0.3)',
+                    color: '#ff4757',
+                    borderRadius: '8px',
+                    padding: '8px 20px',
+                    fontSize: '0.9rem',
+                    fontWeight: '500',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer'
+                  }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 71, 87, 0.25)';
+                    e.currentTarget.style.transform = 'scale(1.05)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.background = 'rgba(255, 71, 87, 0.15)';
+                    e.currentTarget.style.transform = 'scale(1)';
+                  }}
+                >
+                  Logout
+                </button>
               </div>
             ) : (
-              <div className="d-flex align-items-center">
-                <Link to="/login" className="btn btn-outline-light me-2">Login</Link>
-                <Link to="/register" className="btn btn-primary">Register</Link>
+              <div className="d-flex align-items-center gap-2">
+                
               </div>
             )}
           </div>
